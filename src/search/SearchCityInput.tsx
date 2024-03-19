@@ -34,6 +34,7 @@ export const SearchCityInput = ({
     <>
       <div className="search-bar">
         <input
+          className="input is-primary"
           type="text"
           data-testid="search-input"
           onKeyDown={handleKeyDown}
@@ -45,7 +46,7 @@ export const SearchCityInput = ({
       {isDropdownOpen && (
         <div className="search-results-popup">
           {searchResults.length > 0 && (
-            <ul data-testid="search-results" className="search-results">
+            <ul data-testid="search-results" className="search-results panel is-primary">
               {searchResults.map((item, index) => (
                 <SearchResultItem
                   key={index}

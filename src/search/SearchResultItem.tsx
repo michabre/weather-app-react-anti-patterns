@@ -9,9 +9,11 @@ export const SearchResultItem = ({
 }) => {
   return (
     <li className="search-result" onClick={() => onItemClick(item)}>
-      <span className="city">{item.name}</span>
-      <span className="state">{item.state}</span>
-      <span className="country">{item.country}</span>
+      <a className="panel-block">
+        <span className="city">{item.name},&nbsp;</span>
+        <span className="state">{item.state},&nbsp;</span>
+        <span className="country">{item.country}</span>
+      </a>
     </li>
   );
 };

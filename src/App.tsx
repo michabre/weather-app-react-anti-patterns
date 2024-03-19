@@ -46,11 +46,13 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Weather Application</h1>
+      <div className="container m-5">
+        <h1 className="title is-3">Weather Application</h1>
+        <SearchCityInput onItemClick={onItemClick} />
+            
 
-      <SearchCityInput onItemClick={onItemClick} />
-
-      <WeatherList cities={cities} />
+        <WeatherList cities={cities} />
+      </div>
     </div>
   );
 }
