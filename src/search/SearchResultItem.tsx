@@ -10,8 +10,8 @@ export const SearchResultItem = ({
   return (
     <li className="search-result" onClick={() => onItemClick(item)}>
       <a className="panel-block">
-        <span className="city">{item.name},&nbsp;</span>
-        <span className="state">{item.state},&nbsp;</span>
+        <span className="city">{item.name}</span>,&nbsp;
+        <span className="state">{item.state}</span>,&nbsp;
         <span className="country">{item.country}</span>
       </a>
     </li>

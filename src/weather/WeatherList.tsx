@@ -1,5 +1,4 @@
 import { Weather } from "./Weather";
-import React from "react";
 import { CityWeather } from "../models/CityWeather";
 
 const WeatherList = ({ cities }: { cities: CityWeather[] }) => {

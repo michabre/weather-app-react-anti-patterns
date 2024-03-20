@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SearchResultItemType } from './models/SearchResultItemType';
 import { SearchCityInput } from './search/SearchCityInput';
 import { WeatherList } from './weather/WeatherList';
@@ -49,8 +49,6 @@ function App() {
       <div className="container m-5">
         <h1 className="title is-3">Weather Application</h1>
         <SearchCityInput onItemClick={onItemClick} />
-            
-
         <WeatherList cities={cities} />
       </div>
     </div>
