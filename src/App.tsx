@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
+import { ThemeContext } from './theme-provider/ThemeContext';
+import Header from './layout/header/header';
 import { SearchResultItemType } from './models/SearchResultItemType';
 import { SearchCityInput } from './search/SearchCityInput';
 import { WeatherList } from './weather/WeatherList';
@@ -7,6 +9,7 @@ import { fetchCityWeatherData, useFetchCityWeather } from './weather/useFetchCit
 import 'bulma/css/bulma.min.css';
 
 function App() {
+  const { theme } = useContext(ThemeContext);
   const { cities, setCities, fetchCityWeather } = useFetchCityWeather();
 
   const onItemClick = (item: SearchResultItemType) => {
@@ -45,9 +48,9 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
+    <div className={"app " + theme}>
       <div className="container m-5">
-        <h1 className="title is-3">Weather Application</h1>
+        <Header />
         <SearchCityInput onItemClick={onItemClick} />
         <WeatherList cities={cities} />
       </div>
