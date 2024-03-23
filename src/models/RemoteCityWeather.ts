@@ -1,4 +1,5 @@
 interface RemoteCityWeather {
+  id: number;
   name: string;
   main: {
     temp: number;

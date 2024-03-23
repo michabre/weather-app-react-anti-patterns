@@ -1,14 +1,20 @@
 import { RemoteCityWeather } from "./RemoteCityWeather";
 
 export class CityWeather {
+  private _id: number;
   private readonly _name: string;
   private readonly _main: string;
   private readonly _temp: number;
 
   constructor(weather: RemoteCityWeather) {
+    this._id = weather.id;
     this._name = weather.name;
     this._temp = weather.main?.temp;
     this._main = weather.weather[0].main;
+  }
+
+  get id() {
+    return this._id;
   }
 
   get name() {

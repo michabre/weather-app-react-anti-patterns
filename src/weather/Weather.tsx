@@ -8,12 +8,13 @@ const Weather = ({ cityWeather, updateCities }: { cityWeather: CityWeather | und
 
   const removeWeather = (cityWeather:CityWeather) => {
     const items = JSON.parse(localStorage.getItem("favoriteItems") || "[]");
-    const filteredItems = items.filter((item: any) => item.name !== cityWeather?.name);
+    const filteredItems = items.filter((item: any) => item._id !== cityWeather?.id);
     localStorage.setItem(
       "favoriteItems",
       JSON.stringify(filteredItems, null, 2)
     );
     updateCities(true)
+
   }
 
   if (cityWeather) {

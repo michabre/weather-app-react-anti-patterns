@@ -13,6 +13,22 @@ function App() {
   const { cities, setCities, fetchCityWeather } = useFetchCityWeather();
   const [cityRemoved, setCityRemoved] = useState<boolean>(false);
 
+  
+  function hydration() {
+    const hydrate = async () => {
+      const items = JSON.parse(localStorage.getItem("favoriteItems") || "[]");
+
+      const promises = items.map((item: any) => {
+        const searchResultItem = new SearchResultItemType(item);        
+        return fetchCityWeatherData(searchResultItem);
+      });
+
+      const cities = await Promise.all(promises);
+      setCities(cities);
+    };
+    hydrate();
+  }
+
   const onItemClick = (item: SearchResultItemType) => {
     setTimeout(() => {
       const items = JSON.parse(localStorage.getItem("favoriteItems") || "[]");
@@ -33,38 +49,21 @@ function App() {
   };
 
   useEffect(() => {
-    const hydrate = async () => {
-      const items = JSON.parse(localStorage.getItem("favoriteItems") || "[]");
+    hydration()
+  }, [])
 
-      const promises = items.map((item: any) => {
-        const searchResultItem = new SearchResultItemType(item);
-        return fetchCityWeatherData(searchResultItem);
-      });
-
-      const cities = await Promise.all(promises);
-      setCities(cities);
-    };
-
-    hydrate();
-  }, []);
+  useEffect(() => { 
+    console.log('cities', cities)
+    localStorage.setItem(
+      "favoriteItems",
+      JSON.stringify([...cities], null, 2)
+    );
+  }, [cities])
 
   useEffect(() => {
-    console.log('city removed')
-    const hydrate = async () => {
-      const items = JSON.parse(localStorage.getItem("favoriteItems") || "[]");
-
-      const promises = items.map((item: any) => {
-        const searchResultItem = new SearchResultItemType(item);
-        return fetchCityWeatherData(searchResultItem);
-      });
-
-      const cities = await Promise.all(promises);
-      setCities(cities);
-    };
-
-    hydrate();
-    setCityRemoved(false);
-  }, [cityRemoved]);
+    hydration()
+    setCityRemoved(false)
+  }, [cityRemoved])
 
   return (
     <div className={"app " + "theme-" + theme} data-theme={theme}>
