@@ -7,7 +7,7 @@ export class CityWeather {
 
   constructor(weather: RemoteCityWeather) {
     this._name = weather.name;
-    this._temp = weather.main.temp;
+    this._temp = weather.main?.temp;
     this._main = weather.weather[0].main;
   }
 

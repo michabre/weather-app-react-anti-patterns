@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { ThemeContext } from './theme-provider/ThemeContext';
 import Header from './layout/header/header';
 import { SearchResultItemType } from './models/SearchResultItemType';
@@ -11,6 +11,7 @@ import 'bulma/css/bulma.min.css';
 function App() {
   const { theme } = useContext(ThemeContext);
   const { cities, setCities, fetchCityWeather } = useFetchCityWeather();
+  const [cityRemoved, setCityRemoved] = useState<boolean>(false);
 
   const onItemClick = (item: SearchResultItemType) => {
     setTimeout(() => {
@@ -47,12 +48,30 @@ function App() {
     hydrate();
   }, []);
 
+  useEffect(() => {
+    console.log('city removed')
+    const hydrate = async () => {
+      const items = JSON.parse(localStorage.getItem("favoriteItems") || "[]");
+
+      const promises = items.map((item: any) => {
+        const searchResultItem = new SearchResultItemType(item);
+        return fetchCityWeatherData(searchResultItem);
+      });
+
+      const cities = await Promise.all(promises);
+      setCities(cities);
+    };
+
+    hydrate();
+    setCityRemoved(false);
+  }, [cityRemoved]);
+
   return (
-    <div className={"app " + theme}>
+    <div className={"app " + "theme-" + theme} data-theme={theme}>
       <div className="container m-5">
         <Header />
         <SearchCityInput onItemClick={onItemClick} />
-        <WeatherList cities={cities} />
+        <WeatherList cities={cities} updateCities={setCityRemoved} />
       </div>
     </div>
   );

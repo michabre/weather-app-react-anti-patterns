@@ -2,16 +2,20 @@ import { CityWeather } from "../models/CityWeather";
 import { tileTemperatureColor } from "./tileTemperatureColor";
 import "./weather.css";
 
-const removeWeather = (cityWeather:CityWeather) => {
-  const items = JSON.parse(localStorage.getItem("favoriteItems") || "[]");
-  const filteredItems = items.filter((item: any) => item.name !== cityWeather?.name);
-  localStorage.setItem(
-    "favoriteItems",
-    JSON.stringify(filteredItems, null, 2)
-  );
-}
 
-const Weather = ({ cityWeather }: { cityWeather: CityWeather | undefined }) => {
+
+const Weather = ({ cityWeather, updateCities }: { cityWeather: CityWeather | undefined, updateCities:any }) => {
+
+  const removeWeather = (cityWeather:CityWeather) => {
+    const items = JSON.parse(localStorage.getItem("favoriteItems") || "[]");
+    const filteredItems = items.filter((item: any) => item.name !== cityWeather?.name);
+    localStorage.setItem(
+      "favoriteItems",
+      JSON.stringify(filteredItems, null, 2)
+    );
+    updateCities(true)
+  }
+
   if (cityWeather) {
     return (
       <div className="column is-one-quarter">
