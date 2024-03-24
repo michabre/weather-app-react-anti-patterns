@@ -1,6 +1,7 @@
-import { CityWeather } from "../models/CityWeather";
-import { tileTemperatureColor } from "./tileTemperatureColor";
-import "./weather.css";
+import { CityWeather } from "../models/CityWeather"
+import { tileTemperatureColor } from "./tileTemperatureColor"
+import { BsFillXCircleFill } from "react-icons/bs"
+import "./weather.css"
 
 
 
@@ -8,7 +9,10 @@ const Weather = ({ cityWeather, updateCities }: { cityWeather: CityWeather | und
 
   const removeWeather = (cityWeather:CityWeather) => {
     const items = JSON.parse(localStorage.getItem("favoriteItems") || "[]");
-    const filteredItems = items.filter((item: any) => item._id !== cityWeather?.id);
+    const filteredItems = items.filter((item: any) => item.name !== cityWeather?.name);
+
+    console.log(cityWeather)
+
     localStorage.setItem(
       "favoriteItems",
       JSON.stringify(filteredItems, null, 2)
@@ -21,7 +25,7 @@ const Weather = ({ cityWeather, updateCities }: { cityWeather: CityWeather | und
     return (
       <div className="column is-one-quarter">
         <div className={"is-block city weather-container tile notification " + tileTemperatureColor(cityWeather.temperature) + " has-text-centered"}>
-          <button className="remove" onClick={() => removeWeather(cityWeather)}>Remove</button>
+          <button className="remove m-1" onClick={() => removeWeather(cityWeather)}><BsFillXCircleFill size={16} /></button>
           <h3 className="name subtitle mb-2">{cityWeather.name}</h3>
           <div className="details">
             <span className="temperature title">{cityWeather.temperature}</span>

@@ -1,7 +1,7 @@
 import { RemoteCityWeather } from "./RemoteCityWeather";
 
 export class CityWeather {
-  private _id: number;
+  private readonly _id: number;
   private readonly _name: string;
   private readonly _main: string;
   private readonly _temp: number;

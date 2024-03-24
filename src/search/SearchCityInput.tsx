@@ -1,6 +1,6 @@
 import { SearchResultItemType } from "../models/SearchResultItemType";
 import { useSearchCity } from "./useSearchCity";
-import { ChangeEvent, KeyboardEvent } from "react";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { SearchResultItem } from "./SearchResultItem";
 
 export const SearchCityInput = ({
@@ -8,6 +8,8 @@ export const SearchCityInput = ({
 }: {
   onItemClick: (item: SearchResultItemType) => void;
 }) => {
+  const [inputText, setInputText] = useState<string>("");
+
   const {
     fetchCities,
     setQuery,
@@ -22,12 +24,15 @@ export const SearchCityInput = ({
     }
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
+    setInputText(e.target.value);
+  }
 
   const handleItemClick = (item: SearchResultItemType) => {
     onItemClick(item);
     closeDropdownList();
+    setInputText("");
   };
 
   return (
@@ -40,6 +45,7 @@ export const SearchCityInput = ({
           onKeyDown={handleKeyDown}
           onChange={handleChange}
           placeholder="Enter city name (e.g. Melbourne, New York)"
+          value={inputText}
         />
       </div>
 

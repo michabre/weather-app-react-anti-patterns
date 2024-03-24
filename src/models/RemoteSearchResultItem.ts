@@ -1,4 +1,5 @@
 export interface RemoteSearchResultItem {
+  id: number;
   name: string;
   state: string;
   country: string;

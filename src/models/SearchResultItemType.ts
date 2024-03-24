@@ -7,6 +7,7 @@ const countryMap = {
 };
 
 class SearchResultItemType {
+  private readonly _id: number;
   private readonly _name: string;
   private readonly _state: string;
   private readonly _country: string;
@@ -14,11 +15,16 @@ class SearchResultItemType {
   private readonly _long: number;
 
   constructor(item: RemoteSearchResultItem) {
+    this._id = item.id;
     this._name = item.name;
     this._state = item.state;
     this._country = item.country;
     this._lat = item.lat;
     this._long = item.lon;
+  }
+
+  get id() {
+    return this._id;
   }
 
   get name() {

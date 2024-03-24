@@ -34,6 +34,8 @@ function App() {
     setTimeout(() => {
       const items = JSON.parse(localStorage.getItem("favoriteItems") || "[]");
 
+      //console.log('item: ', item)
+
       const newItem = {
         name: item.name,
         lon: item.lon,
@@ -53,13 +55,13 @@ function App() {
     hydration()
   }, [])
 
-  useEffect(() => { 
-    console.log('cities', cities)
-    localStorage.setItem(
-      "favoriteItems",
-      JSON.stringify([...cities], null, 2)
-    );
-  }, [cities])
+  // useEffect(() => { 
+  //   console.log('cities', cities)
+  //   localStorage.setItem(
+  //     "favoriteItems",
+  //     JSON.stringify([...cities], null, 2)
+  //   );
+  // }, [cities])
 
   useEffect(() => {
     hydration()
@@ -68,7 +70,7 @@ function App() {
 
   return (
     <div className={"app theme " + theme} data-theme={theme}>
-      <div className="container mx-5">
+      <div className="container px-5">
         <Header />
         <SearchCityInput onItemClick={onItemClick} />
         <WeatherList cities={cities} updateCities={setCityRemoved} />
