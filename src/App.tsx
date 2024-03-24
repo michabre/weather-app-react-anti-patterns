@@ -1,12 +1,13 @@
-import { useEffect, useContext, useState } from 'react';
-import { ThemeContext } from './theme-provider/ThemeContext';
-import Header from './layout/header/header';
-import { SearchResultItemType } from './models/SearchResultItemType';
-import { SearchCityInput } from './search/SearchCityInput';
-import { WeatherList } from './weather/WeatherList';
-import { fetchCityWeatherData, useFetchCityWeather } from './weather/useFetchCityWeather';
+import { useEffect, useContext, useState } from 'react'
+import { ThemeContext } from './theme-provider/ThemeContext'
+import Header from './layout/header/header'
+import { SearchResultItemType } from './models/SearchResultItemType'
+import { SearchCityInput } from './search/SearchCityInput'
+import { WeatherList } from './weather/WeatherList'
+import { fetchCityWeatherData, useFetchCityWeather } from './weather/useFetchCityWeather'
 
-import 'bulma/css/bulma.min.css';
+import 'bulma/css/bulma.min.css'
+import './theme/theme.scss'
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -66,8 +67,8 @@ function App() {
   }, [cityRemoved])
 
   return (
-    <div className={"app " + "theme-" + theme} data-theme={theme}>
-      <div className="container m-5">
+    <div className={"app theme " + theme} data-theme={theme}>
+      <div className="container mx-5">
         <Header />
         <SearchCityInput onItemClick={onItemClick} />
         <WeatherList cities={cities} updateCities={setCityRemoved} />
