@@ -3,22 +3,16 @@ import { tileTemperatureColor } from "./tileTemperatureColor"
 import { BsFillXCircleFill } from "react-icons/bs"
 import "./weather.css"
 
-
-
 const Weather = ({ cityWeather, updateCities }: { cityWeather: CityWeather | undefined, updateCities:any }) => {
 
   const removeWeather = (cityWeather:CityWeather) => {
     const items = JSON.parse(localStorage.getItem("favoriteItems") || "[]");
     const filteredItems = items.filter((item: any) => item.name !== cityWeather?.name);
-
-    console.log(cityWeather)
-
     localStorage.setItem(
       "favoriteItems",
       JSON.stringify(filteredItems, null, 2)
     );
     updateCities(true)
-
   }
 
   if (cityWeather) {
@@ -28,9 +22,9 @@ const Weather = ({ cityWeather, updateCities }: { cityWeather: CityWeather | und
           <button className="remove m-1" onClick={() => removeWeather(cityWeather)}><BsFillXCircleFill size={16} /></button>
           <h3 className="name subtitle mb-2">{cityWeather.name}</h3>
           <div className="details">
-            <span className="temperature title">{cityWeather.temperature}</span>
-            <div className="weather mt-2">
-              <span className="weather-category">{cityWeather.main}</span>
+            <span className="temperature is-size-2 has-text-weight-bold">{cityWeather.temperature}</span>
+            <div className="weather">
+              <span className="weather-category is-italic">{cityWeather.main}</span>
             </div>
           </div>
         </div>

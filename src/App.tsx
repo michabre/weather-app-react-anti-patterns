@@ -33,15 +33,11 @@ function App() {
   const onItemClick = (item: SearchResultItemType) => {
     setTimeout(() => {
       const items = JSON.parse(localStorage.getItem("favoriteItems") || "[]");
-
-      //console.log('item: ', item)
-
       const newItem = {
         name: item.name,
         lon: item.lon,
         lat: item.lat,
       };
-
       localStorage.setItem(
         "favoriteItems",
         JSON.stringify([newItem, ...items], null, 2)
@@ -51,18 +47,12 @@ function App() {
     return fetchCityWeather(item);
   };
 
+  // Hydrate the list of cities from local storage
   useEffect(() => {
     hydration()
   }, [])
 
-  // useEffect(() => { 
-  //   console.log('cities', cities)
-  //   localStorage.setItem(
-  //     "favoriteItems",
-  //     JSON.stringify([...cities], null, 2)
-  //   );
-  // }, [cities])
-
+  // Update the list of cities when a city is removed
   useEffect(() => {
     hydration()
     setCityRemoved(false)

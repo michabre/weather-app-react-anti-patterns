@@ -5,14 +5,11 @@ import { SearchResultItemType } from "../models/SearchResultItemType";
 const API_KEY = import.meta.env.VITE_OPENWEATHERMAP_KEY;
 
 export const fetchCityWeatherData = async (item: SearchResultItemType) => {
-  console.log(item.name);
   const response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${item.lat}&lon=${item.lon}&appid=${API_KEY}&units=metric`
   );
   const json = await response.json();
-
-  //console.log(json);
-
+  json.name = item.name;
   return new CityWeather(json);
 };
 
