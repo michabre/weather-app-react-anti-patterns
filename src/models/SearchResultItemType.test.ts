@@ -4,6 +4,7 @@ import { SearchResultItemType } from "./SearchResultItemType";
 describe("SearchResultItemType", () => {
   it("convert the remote type to local", () => {
     const remote = {
+      id: "4163971",
       country: "US",
       lat: 28.106471,
       local_names: {

@@ -33,9 +33,11 @@ describe('weather application', () => {
       .click();
     cy.get('[data-testid="favorite-cities"] .city')
       .should('have.length', 1);
-    cy.get('[data-testid="favorite-cities"].name: contains("Melbourne")')
+    cy.get('[data-testid="favorite-cities"] .name:contains("Melbourne")')
       .should('exist');
-    cy.get('[data-testid="favorite-cities"] .city:contains("20°C")')
+    cy.get('[data-testid="favorite-cities"] .temperature:contains("17°C")')
+      .should('exist');
+      cy.get('[data-testid="favorite-cities"] .weather-category:contains("clouds")')
       .should('exist');
   })
 

@@ -9,6 +9,7 @@ export const fetchCityWeatherData = async (item: SearchResultItemType) => {
     `https://api.openweathermap.org/data/2.5/weather?lat=${item.lat}&lon=${item.lon}&appid=${API_KEY}&units=metric`
   );
   const json = await response.json();
+  json.name = item.name;
   return new CityWeather(json);
 };
 
