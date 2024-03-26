@@ -10,6 +10,11 @@ There are some improvements I still need to make in my application. I break the 
 
 ## Getting Started
 
+An [OpenWeatherMap](https://openweathermap.org/) API key will be required to retrieve any weather data. It's a free service as long as you do not make an excessive amount of requests to the platform.
+
+With the API key ready, clone (`git clone https://github.com/michabre/weather-app-react-anti-patterns.git`) the repository to your workstation.
+
+Initializing the application begins as most JavaScript/Typescript based projects do...
 
 ```shell
 # install dependencies
@@ -21,7 +26,7 @@ npm run dev
 
 ### Environment Variables
 
-The OpenWeather Map API Key will be accessible by the code as an environment variable. Using Vite's method for including variables set in the files:
+The OpenWeatherMap API Key will be accessible by the code as an environment variable. Using Vite's method for including variables set in the files:
 
 - `.env`
 - `.env.local`
