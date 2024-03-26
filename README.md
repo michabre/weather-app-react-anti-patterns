@@ -4,7 +4,7 @@ This application is based on the Weather Application project outlined in the boo
 
 The original code for the weather application can be found on [Github](https://github.com/PacktPublishing/React-Anti-Patterns) under **code/src/ch12/weather**. It is the final project of the book and meant to bring together the main topics. As an End-to-End project, it successfully covers the key principles presented for building a React application, along with best practices, testing and code cleanliness.
 
-For my version of the application, I have included the theme mode functionality described in Chapter 2 to better understand the **React Context API**. It also includes the ability to delete items, uses the [Bulma](https://bulma.io/) CSS Framework for styling, uses SASS for compiling stylesheets, icons provided by [React Icons](https://react-icons.github.io/react-icons/) and was built using [ViteJS](https://vitejs.dev/).
+For my version of the application, I have included the theme mode functionality described in Chapter 2 to better understand the **React Context API**. It also includes the ability to delete items, uses the [Bulma](https://bulma.io/) CSS Framework for styling, uses SASS for compiling stylesheets, icons provided by [React Icons](https://github.com/react-icons/react-icons) and was built using [ViteJS](https://vitejs.dev/).
 
 There are some improvements I still need to make in my application. I break the SRP rule in a couple places and am lacking some needed tests to fully cover the functionality. Please be patient.
 
